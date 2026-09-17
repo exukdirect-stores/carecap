@@ -1,0 +1,6 @@
+// CareCap Android wrapper — a thin WebView shell around the CareCap web app.
+// The app itself is server-side (FastAPI); this project only ships the door.
+plugins {
+    id 'com.android.application' version '8.5.2' apply false
+    id 'org.jetbrains.kotlin.android' version '1.9.24' apply false
+}

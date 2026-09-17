@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.CareCap" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:colorPrimary">#1F3A34</item>
+        <item name="android:colorPrimaryDark">#1F3A34</item>
+        <item name="android:colorAccent">#E8B84B</item>
+        <item name="android:statusBarColor">#1F3A34</item>
+        <item name="android:windowBackground">#F5F3EF</item>
+    </style>
+</resources>

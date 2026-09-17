@@ -1,0 +1,65 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.carecap.app'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId "com.carecap.app"
+        minSdk 24
+        targetSdk 35
+        versionCode 1
+        versionName "0.5.0"
+
+        // The deployed CareCap backend. Point this at the permanent home
+        // (Render/Fly) before release — the sandbox preview is ephemeral.
+        buildConfigField "String", "BASE_URL",
+                '"https://8001-iboo5ynozto3cfnop5607.e2b.app"'
+    }
+
+    // Release builds are signed with the upload key from keystore.properties
+    // (next to this file). With Play App Signing enabled, Google re-signs the
+    // app with its own key at upload time — the upload key only has to match
+    // the one registered in Play Console.
+    signingConfigs {
+        upload {
+            def propsFile = rootProject.file('keystore.properties')
+            if (propsFile.exists()) {
+                def props = new Properties()
+                propsFile.withInputStream { props.load(it) }
+                storeFile rootProject.file(props['storeFile'])
+                storePassword props['storePassword']
+                keyAlias props['keyAlias']
+                keyPassword props['keyPassword']
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.upload
+        }
+    }
+
+    buildFeatures {
+        buildConfig true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+}
+
+dependencies {
+    implementation 'androidx.core:core-ktx:1.13.1'
+    implementation 'androidx.activity:activity-ktx:1.9.2'
+}

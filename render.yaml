@@ -1,0 +1,14 @@
+# CareCap — publish configs
+#
+# Render one-click:  render.yaml below (or just push the repo — Render
+# picks up the Dockerfile automatically).
+
+services:
+  - type: web
+    name: carecap
+    runtime: docker
+    plan: free
+    healthCheckPath: /api/health
+    envVars:
+      - key: CARECAP_TZ
+        value: Africa/Nairobi   # the captain's local day

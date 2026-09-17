@@ -1,0 +1,31 @@
+# --- runtime state (auto-seeds on boot; never ship someone's live data) ---
+data/
+
+# --- python ---
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.venv/
+venv/
+.env
+.cache/
+
+# --- node / build noise ---
+node_modules/
+build/
+dist/
+out/
+coverage/
+
+# --- android: source yes, secrets NEVER ---
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+android/keystore.properties
+android/carecap-upload.jks
+
+# --- os ---
+.DS_Store

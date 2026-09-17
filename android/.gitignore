@@ -1,0 +1,8 @@
+# CareCap Android — Gradle, build outputs, and signing secrets.
+.gradle/
+build/
+local.properties
+*.iml
+.idea/
+keystore.properties
+carecap-upload.jks

@@ -1,0 +1,20 @@
+# CareCap — Fly.io
+#   fly launch --no-deploy   (then it adopts this file)
+#   fly deploy
+
+app = "carecap"
+primary_region = "eew"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[http_service]
+  internal_port = 8001
+  force_https = true
+  auto_stop_machines = false
+
+[[vm]]
+  size = "shared-cpu-1x"
+
+[env]
+  CARECAP_TZ = "Africa/Nairobi"
