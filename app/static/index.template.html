@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CareCap — the care captain's OS</title>
+<meta name="theme-color" content="#1f3a34">
+<meta name="description" content="CareCap — the care captain's OS. Doses, refills, team, money, and the weekly family digest in one quiet place.">
+<!-- PWA: installable on Android (and iOS home screen) -->
+<link rel="manifest" href="/static/manifest.webmanifest">
+<link rel="icon" href="/static/icon-192.png">
+<link rel="apple-touch-icon" href="/static/icon-192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<style>
+__APP_CSS__
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="brand">🫂 <b>CareCap</b><span class="tag">the care captain's OS</span></div>
+  <div class="top-right">
+    <span id="family-chip" class="chip hidden"></span>
+    <button id="sign-out" class="btn ghost small hidden">Sign out</button>
+  </div>
+</header>
+
+<div id="sign-in" class="view active"></div>
+
+<div id="app-shell" hidden>
+  <nav class="tabs" id="tabs">
+    <button data-view="today" class="active">Today</button>
+    <button data-view="team">Team</button>
+    <button data-view="money">Money</button>
+    <button data-view="digest">Digest</button>
+    <button data-view="vault">Vault</button>
+  </nav>
+  <main>
+    <section id="view-today" class="view active"></section>
+    <section id="view-team" class="view"></section>
+    <section id="view-money" class="view"></section>
+    <section id="view-digest" class="view"></section>
+    <section id="view-vault" class="view"></section>
+  </main>
+</div>
+
+<div id="toast"></div>
+<script>
+__APP_JS__
+</script>
+</body>
+</html>

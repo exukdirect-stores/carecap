@@ -469,7 +469,29 @@ document.addEventListener("click", async (e) => {
   if (!btn) return;
   const act = btn.dataset.act;
   try {
-    if (act === "mark-taken" || act === "mark-skipped") {
+    if (act === "do-signin") {
+      const t = $("#si-token").value.trim();
+      if (!t) return toast("Enter your family token");
+      setToken(t);
+      me = await api("/api/families/me");
+      toast(`Welcome back, ${me.captain.split(" ")[0]}`);
+      enterApp();
+      return;
+    } else if (act === "do-create-family") {
+      const body = {
+        family_name: $("#nf-name").value.trim(),
+        captain_name: $("#nf-captain").value.trim(),
+        parent_name: $("#nf-parent").value.trim(),
+      };
+      if (!body.family_name || !body.captain_name || !body.parent_name)
+        return toast("Fill in all three fields");
+      const res = await api("/api/families", body);
+      setToken(res.token);
+      me = { family_id: res.family_id, family_name: res.family_name, captain: body.captain_name };
+      toast(`Family ${res.family_name} created — your token is saved`);
+      enterApp();
+      return;
+    } else if (act === "mark-taken" || act === "mark-skipped") {
       await api("/api/doses", {
         med_id: btn.dataset.med,
         date: btn.dataset.date || S.now.slice(0, 10),
